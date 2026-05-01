@@ -1,0 +1,67 @@
+name: holoscene_env
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.10
+  - pip
+  - numpy=1.26.*
+  - scipy
+  - matplotlib
+  - pillow
+  - tqdm
+  - pyyaml
+  - h5py
+  - ninja
+  - cmake>=3.26
+
+  # PyTorch — CUDA 12.1 (must match driver on GPU compute node)
+  - pytorch=2.2.*
+  - torchvision=0.17.*
+  - pytorch-cuda=12.1
+  - torchaudio=2.2.*
+
+  # Build tools needed for CUDA extensions
+  - gxx_linux-64=11.*
+  - gcc_linux-64=11.*
+
+  - pip:
+      # HoloScene and its neural rendering dependencies
+      - git+https://github.com/autonomousvision/holoscene.git
+
+      # Gaussian splatting rasterizer
+      - git+https://github.com/graphdeco-inria/diff-gaussian-rasterization.git
+
+      # gsplat (alternative rasterizer, used by HoloScene)
+      - gsplat==1.3.0
+
+      # tiny-cuda-nn (must be compiled on a GPU node — see README)
+      - git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/torch
+
+      # nvdiffrast (differentiable rendering for mesh export)
+      - git+https://github.com/NVlabs/nvdiffrast.git
+
+      # pytorch3d (Poisson surface reconstruction utilities)
+      - git+https://github.com/facebookresearch/pytorch3d.git
+
+      # USD / OpenUSD export
+      - usd-core>=24.03
+
+      # Normals prior (Marigold)
+      - transformers>=4.40.0
+      - huggingface-hub>=0.22.0
+      - diffusers>=0.27.0
+      - accelerate>=0.28.0
+
+      # Utilities
+      - open3d>=0.18.0
+      - plyfile
+      - trimesh
+      - imageio
+      - imageio-ffmpeg
+      - scikit-image
+      - einops
+      - roma

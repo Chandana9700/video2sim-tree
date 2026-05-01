@@ -1,0 +1,52 @@
+# Video2Sim — pip-compatible requirements
+# For full environment setup (including PyTorch + CUDA), use the conda YML files:
+#   environment_da3.yml        (DA3 + SAM3 stages)
+#   environment_holoscene.yml  (HoloScene stage)
+#
+# This file lists the pure-pip packages for reference or lightweight installs.
+# Install with:  pip install -r requirements.txt
+
+# ── Core scientific stack ──────────────────────────────────────────────────────
+numpy>=1.24,<2.0
+scipy>=1.12
+matplotlib>=3.8
+pillow>=10.2
+tqdm>=4.66
+pyyaml>=6.0
+h5py>=3.10
+einops>=0.7
+roma>=1.4
+
+# ── Vision / image processing ─────────────────────────────────────────────────
+opencv-python>=4.9
+scikit-image>=0.22
+imageio>=2.34
+imageio-ffmpeg>=0.4.9
+
+# ── 3D geometry & point clouds ────────────────────────────────────────────────
+open3d>=0.18.0
+plyfile>=1.0
+trimesh>=4.3
+
+# ── Hugging Face / transformers ecosystem ────────────────────────────────────
+transformers>=4.40.0
+huggingface-hub>=0.22.0
+accelerate>=0.28.0
+diffusers>=0.27.0
+timm>=0.9.16
+
+# ── USD export ────────────────────────────────────────────────────────────────
+usd-core>=24.03
+
+# ── SAM2 (install from source — see README) ───────────────────────────────────
+# git+https://github.com/facebookresearch/sam2.git
+
+# ── HoloScene (install from source — see README) ─────────────────────────────
+# git+https://github.com/autonomousvision/holoscene.git
+
+# ── CUDA extensions (must be compiled on a GPU node — see README) ─────────────
+# git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/torch
+# git+https://github.com/NVlabs/nvdiffrast.git
+# git+https://github.com/graphdeco-inria/diff-gaussian-rasterization.git
+# git+https://github.com/facebookresearch/pytorch3d.git
+# gsplat==1.3.0

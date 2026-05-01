@@ -1,0 +1,46 @@
+name: da3_env
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.10
+  - pip
+  - numpy=1.26.*
+  - scipy
+  - matplotlib
+  - pillow
+  - tqdm
+  - pyyaml
+  - h5py
+  - opencv
+  - einops
+  - ninja
+
+  # PyTorch — CUDA 12.1 build (matches H100 NVL / L40S driver stack)
+  - pytorch=2.2.*
+  - torchvision=0.17.*
+  - pytorch-cuda=12.1
+  - torchaudio=2.2.*
+
+  - pip:
+      # Depth Anything v3
+      - transformers>=4.40.0
+      - huggingface-hub>=0.22.0
+      - accelerate>=0.28.0
+      - diffusers>=0.27.0          # required by marigold-e2e-ft-normals
+      - timm>=0.9.16
+
+      # SAM3 / SAM2 core
+      - git+https://github.com/facebookresearch/sam2.git
+
+      # Utilities
+      - imageio
+      - imageio-ffmpeg
+      - scikit-image
+      - open3d>=0.18.0
+      - plyfile
+      - trimesh
+      - roma                       # rotation utilities used by DA3
